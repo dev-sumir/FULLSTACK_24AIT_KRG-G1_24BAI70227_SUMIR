@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Portal</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Segoe UI,Arial,sans-serif}
+
+body{background:#1a241c;color:#f1f6f3}
+
+header{background:#2f3f2f;border-bottom:1px solid #6b8e5a;padding:18px 40px;display:flex;justify-content:space-between;align-items:center}
+header h1{font-size:22px;color:#d6e3c9;letter-spacing:1px}
+nav a{color:#eef5ee;margin-left:22px;text-decoration:none;font-size:14px}
+nav a:hover{color:#c2d6b7}
+
+.hero{padding:70px 20px;text-align:center;background:linear-gradient(135deg,#3b4f3b,#1a241c)}
+.hero h2{font-size:34px;margin-bottom:10px;color:#eef5ee}
+.hero p{color:#cddac7}
+
+.container{max-width:1100px;margin:auto;padding:40px 20px}
+
+.form-section{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+
+.form-box{
+background:#2b3a2b;
+padding:28px;
+border-radius:16px;
+border:1px solid #6b8e5a;
+box-shadow:0 10px 25px rgba(0,0,0,0.25)
+}
+
+.form-box h3{margin-bottom:20px;color:#eef5ee}
+
+.input-group{margin-bottom:16px}
+
+.input-group label{font-size:13px;color:#cbd9c4;display:block;margin-bottom:6px}
+
+.input-group input, .input-group select{
+width:100%;
+padding:11px;
+border:none;
+border-radius:8px;
+background:#1a241c;
+color:#eef5ee
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#c2b280;
+color:#1a241c;
+font-weight:700;
+cursor:pointer;
+margin-top:10px
+}
+
+button:hover{background:#d8cfa1}
+
+.profile-box{
+background:#2b3a2b;
+padding:28px;
+border-radius:16px;
+border:1px solid #6b8e5a
+}
+
+.profile-box h3{margin-bottom:18px}
+
+.profile-item{margin-bottom:10px;color:#e5efe1}
+
+.jobs{margin-top:50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+
+.job-card{
+background:#2b3a2b;
+padding:22px;
+border-radius:14px;
+border:1px solid #6b8e5a;
+transition:0.2s
+}
+
+.job-card:hover{transform:translateY(-5px)}
+
+.job-card h4{margin-bottom:8px}
+.job-card p{color:#cddac7;font-size:14px}
+
+footer{margin-top:60px;background:#1a241c;border-top:1px solid #6b8e5a;color:#9fb09a;text-align:center;padding:20px;font-size:13px}
+
+@media(max-width:800px){
+.form-section{grid-template-columns:1fr}
+header{flex-direction:column;gap:10px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>JobHunt</h1>
+<nav>
+<a href="#">Home</a>
+<a href="#">Jobs</a>
+<a href="#">Companies</a>
+<a href="#">Login</a>
+</nav>
+</header>
+
+<section class="hero">
+<h2>Job Search Portal</h2>
+<p>Enter your details and see your profile update instantly</p>
+</section>
+
+<div class="container">
+
+<div class="form-section">
+
+<div class="form-box">
+<h3>Job Search Form</h3>
+
+<div class="input-group">
+<label>Name</label>
+<input id="name" type="text" placeholder="Enter your name">
+</div>
+
+<div class="input-group">
+<label>Job Role</label>
+<input id="role" type="text" placeholder="Frontend Developer">
+</div>
+
+<div class="input-group">
+<label>Location</label>
+<input id="location" type="text" placeholder="City">
+</div>
+
+<div class="input-group">
+<label>Experience</label>
+<select id="experience">
+<option>Fresher</option>
+<option>1-2 Years</option>
+<option>3-5 Years</option>
+<option>5+ Years</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Preferred Job Type</label>
+<select id="jobtype">
+<option>Full Time</option>
+<option>Part Time</option>
+<option>Remote</option>
+<option>Internship</option>
+</select>
+</div>
+
+<button onclick="createProfile()">Create Profile</button>
+
+</div>
+
+<div class="profile-box">
+<h3>User Profile</h3>
+
+<div class="profile-item"><strong>Name:</strong> <span id="pname">-</span></div>
+<div class="profile-item"><strong>Role:</strong> <span id="prole">-</span></div>
+<div class="profile-item"><strong>Location:</strong> <span id="plocation">-</span></div>
+<div class="profile-item"><strong>Experience:</strong> <span id="pexperience">-</span></div>
+<div class="profile-item"><strong>Job Type:</strong> <span id="pjobtype">-</span></div>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="form-box" style="margin-bottom:40px">
+<h3>Post a Job</h3>
+
+<div class="input-group">
+<label>Job Title</label>
+<input id="jobTitle" type="text" placeholder="e.g. Full Stack Developer">
+</div>
+
+<div class="input-group">
+<label>Company Name</label>
+<input id="companyName" type="text" placeholder="Company">
+</div>
+
+<div class="input-group">
+<label>Location</label>
+<input id="jobLocation" type="text" placeholder="City">
+</div>
+
+<div class="input-group">
+<label>Job Description</label>
+<input id="jobDesc" type="text" placeholder="Short description">
+</div>
+
+<button onclick="addJobCard()">Submit Job</button>
+
+</div>
+
+<section class="jobs" id="jobsContainer">
+
+<div class="job-card">
+<h4>Frontend Developer</h4>
+<p>Company ABC · Remote</p>
+</div>
+
+<div class="job-card">
+<h4>Backend Engineer</h4>
+<p>Company XYZ · Bangalore</p>
+</div>
+
+<div class="job-card">
+<h4>Data Analyst</h4>
+<p>Startup Hub · Delhi</p>
+</div>
+
+</section>
+
+</div>
+
+<footer>
+© 2026 JobHunt. Military Inspired Job Portal.
+</footer>
+
+<script>
+function addJobCard(){
+
+let title=document.getElementById("jobTitle").value
+let company=document.getElementById("companyName").value
+let location=document.getElementById("jobLocation").value
+let desc=document.getElementById("jobDesc").value
+
+let container=document.getElementById("jobsContainer")
+
+let card=document.createElement("div")
+card.className="job-card"
+
+card.innerHTML=`
+<h4>${title}</h4>
+<p><strong>${company}</strong> · ${location}</p>
+<p>${desc}</p>
+`
+
+container.prepend(card)
+
+}
+
+
+function createProfile(){
+
+let name=document.getElementById("name").value
+let role=document.getElementById("role").value
+let location=document.getElementById("location").value
+let exp=document.getElementById("experience").value
+let type=document.getElementById("jobtype").value
+
+
+document.getElementById("pname").textContent=name
+document.getElementById("prole").textContent=role
+document.getElementById("plocation").textContent=location
+document.getElementById("pexperience").textContent=exp
+document.getElementById("pjobtype").textContent=type
+
+}
+</script>
+
+</body>
+</html>

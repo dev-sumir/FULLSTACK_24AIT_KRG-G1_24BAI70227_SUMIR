@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result">Waiting for data...</p>
+    <script>
+        const fetchData = new Promise(function(ressolve, reject){
+            setTimeout(function(){
+                ressolve("Data Fetched Successfully");
+            },2000);
+        });
+        fetchData.then(function(message){
+            document.getElementById("result").innerText=message;
+        }).catch(function(error){
+            console.log(error)
+        });
+    </script>
+</body>
+</html>

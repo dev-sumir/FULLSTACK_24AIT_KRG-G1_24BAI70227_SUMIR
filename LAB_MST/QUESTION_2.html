@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para">Click the button to change the content.</p>
+    <button onclick="changeText()">Click Here</button>
+    <script>
+        function changeText(){
+            var paragraph = document.getElementById("para");
+
+            paragraph.innerText="Welcome to JavaScript DOM Manipulation";
+            paragraph.style.color="blue";
+        }
+    </script>
+</body>
+</html>
